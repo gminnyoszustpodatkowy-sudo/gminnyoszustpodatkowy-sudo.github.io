@@ -79,6 +79,8 @@
             const hours = Math.floor(diff / (1000 * 60 * 60));
             const minutes = Math.floor((diff / (1000 * 60)) % 60);
             const seconds = Math.floor((diff / 1000) % 60);
+            if (minutes < 10) { minutes = `0${minutes}` }
+            if (seconds < 10) { seconds = `0${seconds}` }
 
             document.querySelector('h1').innerHTML = `${hours}:${minutes}`;
             document.querySelector('h6').innerHTML = `${hours}:${minutes}:${seconds}`;
@@ -91,4 +93,5 @@
 
 
 </html>
+
 
