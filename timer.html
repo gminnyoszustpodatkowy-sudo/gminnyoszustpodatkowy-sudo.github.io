@@ -75,10 +75,10 @@
             const target = new Date();
             target.setHours(15, 0, 0, 0);
             const now = new Date();
-            const diff = target - now;
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff / (1000 * 60)) % 60);
-            const seconds = Math.floor((diff / 1000) % 60);
+            let diff = target - now;
+            let hours = Math.floor(diff / (1000 * 60 * 60));
+            let minutes = Math.floor((diff / (1000 * 60)) % 60);
+            let seconds = Math.floor((diff / 1000) % 60);
             if (minutes < 10) { minutes = `0${minutes}` }
             if (seconds < 10) { seconds = `0${seconds}` }
 
@@ -93,5 +93,6 @@
 
 
 </html>
+
 
 
