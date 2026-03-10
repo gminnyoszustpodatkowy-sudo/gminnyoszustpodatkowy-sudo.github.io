@@ -125,6 +125,7 @@
             padding: 0;
             background-color: #010101;
             color: white;
+            text-decoration: none;
         }
 
         body {
@@ -181,3 +182,4 @@
             }
 
         }
+
