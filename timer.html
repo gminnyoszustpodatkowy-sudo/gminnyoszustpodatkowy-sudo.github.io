@@ -65,34 +65,45 @@
 <body>
     <main>
         <h3>Do końca dzisiejszej praktyki zostało: </h3>
-        <a href="index.html"><h1>Godzina</h1></a>
+        <a href="index.html">
+            <h1>Godzina</h1>
+        </a>
     </main>
     <footer>
         <h6>sekundy</h6>
     </footer>
     <script>
-        function czasen() {
-            const target = new Date();
-            target.setHours(15, 0, 0, 0);
-            const now = new Date();
-            let diff = target - now;
-            let hours = Math.floor(diff / (1000 * 60 * 60));
-            let minutes = Math.floor((diff / (1000 * 60)) % 60);
-            let seconds = Math.floor((diff / 1000) % 60);
-            if (minutes < 10) { minutes = `0${minutes}` }
-            if (seconds < 10) { seconds = `0${seconds}` }
+        const dt = new Date();
+        const date = Date.parse(new Date());
+        const start = dt.setHours(15, 0, 0, 0);
+        const end = dt.setHours(8, 0, 0, 0);
+        const daystart = dt.setHours(0, 0, 0, 0);
+        if (date < start && date > end) {
+            function czasen() {
+                const target = new Date();
+                target.setHours(15, 0, 0, 0);
+                const now = new Date();
+                let diff = target - now;
+                let hours = Math.floor(diff / (1000 * 60 * 60));
+                let minutes = Math.floor((diff / (1000 * 60)) % 60);
+                let seconds = Math.floor((diff / 1000) % 60);
+                if (minutes < 10) { minutes = `0${minutes}` }
+                if (seconds < 10) { seconds = `0${seconds}` }
 
-            document.querySelector('h1').innerHTML = `${hours}:${minutes}`;
-            document.querySelector('h6').innerHTML = `${hours}:${minutes}:${seconds}`;
+                document.querySelector('h1').innerHTML = `${hours}:${minutes}`;
+                document.querySelector('h6').innerHTML = `${hours}:${minutes}:${seconds}`;
 
+            }
+            setInterval(czasen, 1)
         }
-
-        setInterval(czasen, 1)
+        else if (date < daystart) {
+            document.querySelector('h3').innerHTML = `Praktyka się jeszcze nie zaczęła.`;
+        }
+        else {
+            document.querySelector('h3').innerHTML = `Praktyka się skończyła.`;
+        }
     </script>
 </body>
 
 
 </html>
-
-
-
