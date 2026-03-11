@@ -16,25 +16,25 @@
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-HeavyItalic.otf') format('opentype');
     font-weight: 800;
     font-style: italic;
-}
+}*/
 @font-face {
     font-family: 'SF Pro Display';
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Bold.otf') format('opentype');
     font-weight: 700;
     font-style: normal;
-}
+}/*
 @font-face {
     font-family: 'SF Pro Display';
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-BoldItalic.otf') format('opentype');
     font-weight: 700;
     font-style: italic;
-}*/
+}
 @font-face {
     font-family: 'SF Pro Display';
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Semibold.otf') format('opentype');
     font-weight: 600;
     font-style: normal;
-}/*
+}
 @font-face {
     font-family: 'SF Pro Display';
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-SemiboldItalic.otf') format('opentype');
@@ -65,13 +65,13 @@
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-RegularItalic.otf') format('opentype');
     font-weight: 400;
     font-style: italic;
-}
+}*/
 @font-face {
     font-family: 'SF Pro Display';
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Semibold.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
-}
+}/*
 @font-face {
     font-family: 'SF Pro Display';
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-SemiboldItalic.otf') format('opentype');
@@ -177,4 +177,5 @@
             }
 
         }
+
 
