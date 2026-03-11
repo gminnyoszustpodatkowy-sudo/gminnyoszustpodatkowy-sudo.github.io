@@ -1,9 +1,4 @@
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Black.otf') format('opentype');
-    font-weight: 900;
-    font-style: normal;
-}
+/* @font-face { font-family: 'SF Pro Display'; src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Black.otf') format('opentype'); font-weight: 900; font-style: normal; }
 @font-face {
     font-family: 'SF Pro Display';
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-BlackItalic.otf') format('opentype');
@@ -33,13 +28,13 @@
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-BoldItalic.otf') format('opentype');
     font-weight: 700;
     font-style: italic;
-}
+}*/
 @font-face {
     font-family: 'SF Pro Display';
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Semibold.otf') format('opentype');
     font-weight: 600;
     font-style: normal;
-}
+}/*
 @font-face {
     font-family: 'SF Pro Display';
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-SemiboldItalic.otf') format('opentype');
@@ -57,14 +52,14 @@
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-MediumItalic.otf') format('opentype');
     font-weight: 500;
     font-style: italic;
-}
+}*/
 @font-face {
     font-family: 'SF Pro Display';
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
-}
+}/*
 @font-face {
     font-family: 'SF Pro Display';
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-RegularItalic.otf') format('opentype');
@@ -118,7 +113,7 @@
     src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-UltralightItalic.otf') format('opentype');
     font-weight: 100;
     font-style: italic;
-}
+}*/
 * {
             font-family: 'SF Pro Display', serif;
             margin: 0;
