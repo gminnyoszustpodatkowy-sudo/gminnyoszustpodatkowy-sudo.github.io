@@ -158,16 +158,26 @@ h1 {
     display: flex;
     justify-content: space-around;
 }
-#timeInput, #dateInput{
+#selectHead{
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+#header{
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+}
+#timeInput, #dateInput, .flatpickr-mobile{
     width: 135px;
     padding: 10px;
     border: 2px solid white;
     border-radius: 10px;
 }
-#timeInput::placeholder, #dateInput::placeholder{
+#timeInput::placeholder, #dateInput::placeholder, .flatpickr-mobile::placeholder{
     color: rgb(192, 192, 192);
 }
-#timeInput:focus, #dateInput:focus{
+#timeInput:focus, #dateInput:focus, .flatpickr-mobile:focus{
     border: 2px solid white;
 }
 #przelicz {
@@ -188,4 +198,44 @@ div{
 }
 p{
     padding-bottom: 10px;
+}
+@media(max-width: 700px){
+    body{
+        margin-top: 20px;
+    }
+    #left, #right{
+        width: 100%;
+    }
+    #select{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    #select input, select{
+        margin: 10px;
+    }
+    main{
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    h1{
+        font-size: 7em;
+    }
+    #left, #right{
+        width: 100%;
+    }
+    #selectHead{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+#header{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 100%;
+}
 }

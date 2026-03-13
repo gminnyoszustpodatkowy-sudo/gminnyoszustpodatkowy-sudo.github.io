@@ -30,16 +30,19 @@
     <!-- <link rel="preload" href="https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Ultralight.otf" as="font" type="font/otf" crossorigin="anonymous"> -->
     <!-- <link rel="preload" href="https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-UltralightItalic.otf" as="font" type="font/otf" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="stylesTZ.css">
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/favicon.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="scriptTZ.js" defer></script>
 </head>
 
 <body>
     <section id="select">
-        <input id="timeInput" placeholder="HH:MM">
+        <section id="selectHead">
+            <input id="timeInput" placeholder="HH:MM">
         <input id="dateInput" placeholder="DD-MM-YYYY">
-        <select id="timezone">
+        </section>
+        <section id="header">
+            <select id="timezone">
             <option value="Etc/GMT+12">Oceania (GMT -12)</option>
             <option value="Pacific/Pago_Pago">Samoa Standart Time (SST) (GMT -11)</option>
             <option value="Etc/GMT+10">Oceania (GMT +10)</option>
@@ -126,6 +129,8 @@
         </select>
 
         <input type="button" value="Przelicz" onclick="convertTime()" id="przelicz">
+        </section>
+        
 
     </section>
     <main>
