@@ -33,6 +33,7 @@
     <link rel="shortcut icon" href="https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/favicon.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="scriptTZ.js" defer></script>
+    <script src="timezones.js" defer></script>
 </head>
 
 <body>
@@ -42,91 +43,7 @@
         <input id="dateInput" placeholder="DD-MM-YYYY">
         </section>
         <section id="header">
-            <select id="timezone">
-            <option value="Etc/GMT+12">Oceania (GMT -12)</option>
-            <option value="Pacific/Pago_Pago">Samoa Standart Time (SST) (GMT -11)</option>
-            <option value="Etc/GMT+10">Oceania (GMT +10)</option>
-            <option value="America/Adak">Hawaii-Aleutian Time Zone (HST/HDT) (GMT -10/-9)</option>
-            <option value="Pacific/Honolulu">Hawaje (HST) (GMT -10)</option>
-            <option value="Pacific/Marquesas">Marquesas Islands (GMT -9:30)</option>
-            <option value="Etc/GMT+9">Pacyfik (GMT -9)</option>
-            <option value="America/Anchorage">Alaska Time Zone (AKST/AKDT) (GMT -9/-8)</option>
-            <option value="Etc/GMT+8">Pacyfik (GMT -8)</option>
-            <option value="America/Los_Angeles">Pacific Time Zone (PST/PDT) (GMT -8/-7)</option>
-            <option value="Etc/GMT+7">Ameryka (GMT -7)</option>
-            <option value="America/Denver">Mountain Time Zone (MST/MDT) (GMT -7/-6)</option>
-            <option value="Pacific/Easter">Wyspa Wielkanocna (GMT -6/-5)</option>
-            <option value="Pacific/Galapagos">Wyspy Galapagos (GMT -6)</option>
-            <option value="America/Chicago">Central Time Zone (CST/CDT) (GMT -6/-5)</option>
-            <option value="America/Costa_Rica">Central Summer Time (CST) (GMT -6)</option>
-            <option value="America/Lima">Zachodnia Ameryka Południowa (GMT -5)</option>
-            <option value="America/Detroit">Eastern Time Zone (EST/EDT) (GMT -5/-4)</option>
-            <option value="America/Jamaica">Eastern Summer Zone (EST) (GMT -5)</option>
-            <option value="Etc/GMT+4">Środkowa Ameryka Południowa (GMT -4)</option>
-            <option value="America/Halifax">Atlantic Time Zone (AST/ADT) (GMT -4/-3)</option>
-            <option value="America/Puerto_Rico">Atlantic Summer Time (AST) (GMT -4)</option>
-            <option value="Canada/Newfoundland">Newfoundland Time Zone (NST/NDT) (GMT -3:30/-2:30)</option>
-            <option value="Etc/GMT+3">Wschodni Przylądek Ameryki Południowej (Brazylia-Wschód/Argentyna) (GMT -3)</option>
-            <option value="America/Nuuk">Grenlandia (GMT -2/-1)</option>
-            <option value="Etc/GMT+2">Atlantyk (GMT -2)</option>
-            <option value="Atlantic/Cape_Verde">Wyspy Zielonego Przylądka (GMT -1)</option>
-            <option value="Atlantic/Azores">Azory (GMT -1/+0)</option>
-            <!-- <option value="Antarctica/Troll">Troll (Antarktyda) (GMT 0/+2)</option> -->
-            <option value="Etc/UTC" selected>Universal Time Zone (UTC) (GMT +0)</option>
-            <option value="Africa/Abidjan">Greenwich Mean Time (GMT +0)</option>
-            <option value="Europe/London">Wielka Brytania (GMT/BST) (GMT +0/1)</option>
-            <option value="Europe/Dublin">Irlandia (GMT/IST) (GMT +0/1)</option>
-            <option value="Europe/Lisbon">Czas Zachodnioeuropejski (WET/WEST) (GMT +0/1)</option>
-            <option value="Africa/Casablanca">Casablanca (Afryka) (GMT +1/+0)</option>
-            <option value="Etc/GMT-1">Europa/Afryka (GMT +1)</option>
-            <option value="Europe/Warsaw">Czas środkowoeuropejski (CET/CEST) (GMT +1/2)</option>
-            <option value="Africa/Tunis">Czas środkowoeuropejski (CET) (GMT +1)</option>
-            <option value="Africa/Lagos">Czas zachodnioafrykański (WAT) (GMT +1)</option>
-            <option value="Africa/Khartoum">Czas Środkowoafrykański (CAT) (GMT +2)</option>
-            <option value="Europe/Tallinn">Czas Wschodnioeuropejski (EET/EEST) (GMT +2/3)</option>
-            <option value="Europe/Kaliningrad">Czas Wschodnioeuropejski (EET) (GMT +2)</option>
-            <option value="Asia/Jerusalem">Israel Standart Time (IST/IDT) (GMT +2/3)</option>
-            <option value="Africa/Johannesburg">Czas Południowoafrykański (SAST) (GMT +2)</option>
-            <option value="Etc/GMT-3">Azja/Bliski Wschód (GMT +3)</option>
-            <option value="Africa/Dar_es_Salaam">Czas Wschodnioafrykański (EAT) (GMT +3)</option>
-            <option value="Europe/Moscow">Czas Moskiewski (MSK) (GMT +3)</option>
-            <option value="Asia/Tehran">Iran (GMT +3:30)</option>
-            <option value="Etc/GMT-4">Rosja/Azja (GMT +4)</option>
-            <option value="Asia/Kabul">Afganistan (GMT +4:30)</option>
-            <option value="Etc/GMT-5">Azja Północnozachodnia (GMT +5)</option>
-            <option value="Asia/Colombo">Sri Lanka (GMT +5:30)</option>
-            <option value="Asia/Kolkata">Indian Standart Time (IST) (GMT +5:30)</option>
-            <option value="Asia/Kathmandu">Nepal (GMT +5:45)</option>
-            <option value="Etc/GMT-6">Azja Północnocentralna (GMT +6)</option>
-            <option value="Asia/Yangon">Birma (GMT +6:30)</option>
-            <option value="Etc/GMT-7">Środkowa Azja (GMT +7)</option>
-            <option value="Asia/Jakarta">Western Indonesian Time (WIB) (GMT +7)</option>
-            <option value="Etc/GMT-8">Azja Północnowschodnia/Australia Zachodnia (GMT +8)</option>
-            <option value="Australia/West">Czas Zachodnioaustralijski (AWST) (GMT +8)</option>
-            <option value="Asia/Shanghai">Czas Chiński (GMT +8)</option>
-            <option value="Asia/Hong_Kong">Hong Kong Time (HKT) (GMT +8)</option>
-            <option value="Asia/Manila">Philiphines Standart Time (PST) (GMT +8)</option>
-            <option value="Asia/Makassar">Western Indonesian Time (WITA) (GMT +8)</option>
-            <option value="Australia/Eucla">Western Australia (Eucla) (GMT +8:45)</option>
-            <option value="Etc/GMT-9">Syberia (GMT +9)</option>
-            <option value="Asia/Tokyo">Japan Standart Time (JST) (GMT +9)</option>
-            <option value="Asia/Seoul">Korean Standart Time (KST) (GMT +9)</option>
-            <option value="Asia/Jayapura">Western Indonesian Time (WIT) (GMT +9)</option>
-            <option value="Australia/South">Australia Central Standart Time (ACST/ACDT) (GMT +9:30/10:30)</option>
-            <option value="Australia/North">Australia Central Winter Time (ACST) (GMT +9:30)</option>
-            <option value="Etc/GMT-10">Azja Zachodnia (GMT +10)</option>
-            <option value="Australia/Canberra">Australia Western Standart Time (AEST/AEDT) (GMT +10/11)</option>
-            <option value="Australia/Brisbane">Australia Western Winter Time (AEST) (GMT +10)</option>
-            <option value="Pacific/Guam">Guam Time Zone (ChST) (GMT +10)</option>
-            <option value="Australia/Lord_Howe">Wyspa Lord Howe (GMT +10:30/11)</option>
-            <option value="Etc/GMT-11">Czukotka/Oceania (GMT +11)</option>
-            <option value="Pacific/Norfolk">Wyspa Norfolk (GMT +11/12)</option>
-            <option value="Etc/GMT-12">Kamczatka/Oceania (GMT +12)</option>
-            <option value="Pacific/Auckland">New Zealand Standart Time (NZST/NZDT) (GMT +12/13)</option>
-            <option value="Pacific/Chatham">Wyspy Chatham (GMT +12:45/13:45)</option>
-            <option value="Etc/GMT-13">Kamczatka/Pacyfik (GMT +13)</option>
-            <option value="Etc/GMT-14">Pacyfik/Kiribati (GMT +14)</option>
-        </select>
+            <select id="timezone"></select>
 
         <input type="button" value="Przelicz" onclick="convertTime()" id="przelicz">
         </section>
