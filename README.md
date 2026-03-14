@@ -1,4 +1,4 @@
 # Stronka do odliczania ile zostalo do konca praktyki :DD
 
-[Tutaj stronka^↗^](https://tinyurl.com/TimerGTH)
-[A tu przelicznik stref czasowych^↗^](https://tinyurl.com/TimeZoneConverterGTH)
+[Tutaj stronka<sup>↗</sup>](https://tinyurl.com/TimerGTH)<br>
+[A tu przelicznik stref czasowych<sup>↗</sup>](https://tinyurl.com/TimeZoneConverterGTH)<br>
