@@ -43,3 +43,49 @@ function localToSelected() {
     document.querySelector("#resultHourNow").innerHTML = localHour;
     document.querySelector("#resultDateNow").innerHTML = localDate;
 }
+
+
+
+function localToSelected() {
+    const timeInput = document.getElementById("timeInput").value;
+    const dateInput = document.getElementById("dateInput").value;
+    const timezone = document.getElementById("timezone").value;
+    const localTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    if (!timeInput || !dateInput) return;
+
+    const [hours, minutes] = timeInput.split(":").map(Number);
+    const [day, month, year] = dateInput.split(".").map(Number);
+
+    // czas lokalny
+    const localDate = new Date(year, month - 1, day, hours, minutes);
+
+    const formattedSelectedDate = new Intl.DateTimeFormat("pl-PL", {
+        timeZone: timezone,
+        dateStyle: "full"
+    }).format(localDate);
+
+    const formattedSelectedHour = new Intl.DateTimeFormat("pl-PL", {
+        timeZone: timezone,
+        timeStyle: "short"
+    }).format(localDate);
+
+    const formattedLocalDate = new Intl.DateTimeFormat("pl-PL", {
+        timeZone: localTimezone,
+        dateStyle: "full"
+    }).format(localDate);
+
+    const formattedLocalHour = new Intl.DateTimeFormat("pl-PL", {
+        timeZone: localTimezone,
+        timeStyle: "short"
+    }).format(localDate);
+
+    document.querySelector("#localTimeText").innerHTML = "Czas lokalny:";
+    document.querySelector("#selectedTimeText").innerHTML = "Wybrana strefa czasowa:";
+
+    document.querySelector("#resultHour").innerHTML = formattedSelectedHour;
+    document.querySelector("#resultDate").innerHTML = formattedSelectedDate;
+
+    document.querySelector("#resultHourNow").innerHTML = formattedLocalHour;
+    document.querySelector("#resultDateNow").innerHTML = formattedLocalDate;
+}
