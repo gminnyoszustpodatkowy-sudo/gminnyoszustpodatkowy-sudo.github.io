@@ -1,0 +1,59 @@
+<script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+
+<input id="datePicker">
+<input id="timePicker">
+
+<select id="timezone">
+  <option value="America/New_York">New York</option>
+  <option value="Europe/London">London</option>
+  <option value="Asia/Tokyo">Tokyo</option>
+</select>
+
+<button id="convert">Przelicz</button>
+
+<section id="result">
+  <p>Data: <span id="localDate"></span></p>
+  <p>Godzina: <span id="localTime"></span></p>
+</section>
+
+flatpickr("#datePicker", {
+  dateFormat: "Y-m-d"
+});
+
+flatpickr("#timePicker", {
+  enableTime: true,
+  noCalendar: true,
+  dateFormat: "H:i"
+});
+
+const { DateTime } = luxon;
+
+function convertToLocal(dateStr, timeStr, timezone) {
+
+  // tworzymy datetime w wybranej strefie
+  const dateTime = DateTime.fromISO(
+    `${dateStr}T${timeStr}`,
+    { zone: timezone }
+  );
+
+  // konwersja do lokalnej strefy użytkownika
+  const local = dateTime.toLocal();
+
+  return {
+    date: local.toFormat("yyyy-MM-dd"),
+    time: local.toFormat("HH:mm")
+  };
+}
+
+document.getElementById("convert").addEventListener("click", () => {
+
+  const date = document.getElementById("datePicker").value;
+  const time = document.getElementById("timePicker").value;
+  const timezone = document.getElementById("timezone").value;
+
+  const result = convertToLocal(date, time, timezone);
+
+  document.getElementById("localDate").textContent = result.date;
+  document.getElementById("localTime").textContent = result.time;
+
+});
