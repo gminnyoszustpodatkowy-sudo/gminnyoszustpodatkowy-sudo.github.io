@@ -1,59 +1,45 @@
-<script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+function localToSelected() {
+    const timeInput = document.getElementById("timeInput").value;
+    const dateInput = document.getElementById("dateInput").value;
+    const timezone = document.getElementById("timezone").value;
+    const localTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-<input id="datePicker">
-<input id="timePicker">
+    if (!timeInput || !dateInput) return;
 
-<select id="timezone">
-  <option value="America/New_York">New York</option>
-  <option value="Europe/London">London</option>
-  <option value="Asia/Tokyo">Tokyo</option>
-</select>
+    const [hours, minutes] = timeInput.split(":").map(Number);
+    const [day, month, year] = dateInput.split(".").map(Number);
 
-<button id="convert">Przelicz</button>
+    // tworzymy moment w UTC
+    const utcDate = new Date(Date.UTC(year, month - 1, day, hours, minutes));
 
-<section id="result">
-  <p>Data: <span id="localDate"></span></p>
-  <p>Godzina: <span id="localTime"></span></p>
-</section>
+    // czas w wybranej strefie
+    const selectedDate = new Intl.DateTimeFormat("pl-PL", {
+        timeZone: timezone,
+        dateStyle: "full"
+    }).format(utcDate);
 
-flatpickr("#datePicker", {
-  dateFormat: "Y-m-d"
-});
+    const selectedHour = new Intl.DateTimeFormat("pl-PL", {
+        timeZone: timezone,
+        timeStyle: "short"
+    }).format(utcDate);
 
-flatpickr("#timePicker", {
-  enableTime: true,
-  noCalendar: true,
-  dateFormat: "H:i"
-});
+    // czas lokalny użytkownika
+    const localDate = new Intl.DateTimeFormat("pl-PL", {
+        timeZone: localTimezone,
+        dateStyle: "full"
+    }).format(utcDate);
 
-const { DateTime } = luxon;
+    const localHour = new Intl.DateTimeFormat("pl-PL", {
+        timeZone: localTimezone,
+        timeStyle: "short"
+    }).format(utcDate);
 
-function convertToLocal(dateStr, timeStr, timezone) {
+    document.querySelector("#localTimeText").innerHTML = "Czas lokalny:";
+    document.querySelector("#selectedTimeText").innerHTML = "Wybrana strefa czasowa:";
 
-  // tworzymy datetime w wybranej strefie
-  const dateTime = DateTime.fromISO(
-    `${dateStr}T${timeStr}`,
-    { zone: timezone }
-  );
+    document.querySelector("#resultHour").innerHTML = selectedHour;
+    document.querySelector("#resultDate").innerHTML = selectedDate;
 
-  // konwersja do lokalnej strefy użytkownika
-  const local = dateTime.toLocal();
-
-  return {
-    date: local.toFormat("yyyy-MM-dd"),
-    time: local.toFormat("HH:mm")
-  };
+    document.querySelector("#resultHourNow").innerHTML = localHour;
+    document.querySelector("#resultDateNow").innerHTML = localDate;
 }
-
-document.getElementById("convert").addEventListener("click", () => {
-
-  const date = document.getElementById("datePicker").value;
-  const time = document.getElementById("timePicker").value;
-  const timezone = document.getElementById("timezone").value;
-
-  const result = convertToLocal(date, time, timezone);
-
-  document.getElementById("localDate").textContent = result.date;
-  document.getElementById("localTime").textContent = result.time;
-
-});
