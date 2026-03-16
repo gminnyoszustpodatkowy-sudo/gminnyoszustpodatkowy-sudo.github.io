@@ -1,0 +1,29 @@
+function convertToLocalTime(dateString, fromTimeZone) {
+  // data w podanej strefie
+  const date = new Date(
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: fromTimeZone,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false
+    }).format(new Date(dateString))
+  );
+
+  // lokalna strefa użytkownika
+  const localTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  // format w lokalnej strefie
+  return new Intl.DateTimeFormat("pl-PL", {
+    timeZone: localTimeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  }).format(date);
+}
