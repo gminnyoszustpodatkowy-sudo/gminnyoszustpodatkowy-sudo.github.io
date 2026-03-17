@@ -1,181 +1,64 @@
-/* @font-face { font-family: 'SF Pro Display'; src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Black.otf') format('opentype'); font-weight: 900; font-style: normal; }
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-BlackItalic.otf') format('opentype');
-    font-weight: 900;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Heavy.otf') format('opentype');
-    font-weight: 800;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-HeavyItalic.otf') format('opentype');
-    font-weight: 800;
-    font-style: italic;
-}*/
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Bold.otf') format('opentype');
-    font-weight: 700;
-    font-style: normal;
-}/*
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-BoldItalic.otf') format('opentype');
-    font-weight: 700;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Semibold.otf') format('opentype');
-    font-weight: 600;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-SemiboldItalic.otf') format('opentype');
-    font-weight: 600;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Medium.otf') format('opentype');
-    font-weight: 500;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-MediumItalic.otf') format('opentype');
-    font-weight: 500;
-    font-style: italic;
-}*/
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Regular.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}/*
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-RegularItalic.otf') format('opentype');
-    font-weight: 400;
-    font-style: italic;
-}*/
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Semibold.otf') format('opentype');
-    font-weight: 500;
-    font-style: normal;
-}/*
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-SemiboldItalic.otf') format('opentype');
-    font-weight: 500;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Thin.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-ThinItalic.otf') format('opentype');
-    font-weight: 300;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Light.otf') format('opentype');
-    font-weight: 200;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-LightItalic.otf') format('opentype');
-    font-weight: 200;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-Ultralight.otf') format('opentype');
-    font-weight: 100;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/fonts/SF-Pro-Display-UltralightItalic.otf') format('opentype');
-    font-weight: 100;
-    font-style: italic;
-}*/
 * {
-            font-family: 'SF Pro Display', serif;
-            margin: 0;
-            padding: 0;
-            background-color: #010101;
-            color: white;
-            text-decoration: none;
-        }
+    font-family: 'SF Pro Display', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #010101;
+    color: white;
+    text-decoration: none;
+}
 
-        body {
-            margin: 25vh 30px 0px 30px;
-        }
+body {
+    margin: 25vh 30px 0px 30px;
+}
 
-        main {
-            text-align: center;
-            height: 70vh;
-        }
+main {
+    text-align: center;
+    height: 70vh;
+}
 
-        h3 {
-            font-weight: 500;
-            font-size: 3em;
-        }
+h3 {
+    font-weight: 500;
+    font-size: 3em;
+}
 
-        h1 {
-            font-weight: 700;
-            font-size: 12em;
-        }
+h1 {
+    font-weight: 700;
+    font-size: 12em;
+}
 
-        footer {
-            height: 4vh;
-            text-align: center;
-        }
+footer {
+    height: 4vh;
+    text-align: center;
+}
 
-        h6 {
-            font-weight: 500;
-            font-size: 1em;
-        }
+h6 {
+    font-weight: 500;
+    font-size: 1em;
+}
 
-        @media(max-width: 400px) {
-            body{
-                margin: 30px 30px 0px 30px;
-            }
-            main {
-                text-align: center;
-                height: 90vh;
-            }
+@media(max-width: 400px) {
+    body {
+        margin: 30px 30px 0px 30px;
+    }
 
-            h3 {
-                font-weight: 500;
-                font-size: 1.5em;
-            }
+    main {
+        text-align: center;
+        height: 90vh;
+    }
 
-            h1 {
-                font-weight: 700;
-                font-size: 6em;
-            }
+    h3 {
+        font-weight: 500;
+        font-size: 1.5em;
+    }
 
-            footer {
-                height: 4vh;
-                display: none;
-            }
+    h1 {
+        font-weight: 700;
+        font-size: 6em;
+    }
 
-        }
+    footer {
+        height: 4vh;
+        display: none;
+    }
 
-
+}
