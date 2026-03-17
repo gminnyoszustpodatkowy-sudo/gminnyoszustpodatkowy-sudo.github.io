@@ -27,7 +27,7 @@ main {
     height: 75vh;
 }
 
-#dateInputOne {
+#dateInputOne, #dateInputTwo {
     width: 100%;
     height: 0.8em;
     font-weight: 500;
@@ -38,29 +38,7 @@ main {
     outline: none;
 }
 
-#dateInputTwo {
-    width: 100%;
-    height: 0.8em;
-    font-weight: 500;
-    font-size: 3em;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    outline: none;
-}
-
-#timeInputOne {
-    height: 0.8em;
-    width: 100%;
-    font-weight: 700;
-    font-size: 6em;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    outline: none;
-}
-
-#timeInputTwo {
+#timeInputOne, #timeInputTwo {
     height: 0.8em;
     width: 100%;
     font-weight: 700;
@@ -124,15 +102,15 @@ p {
     #right {
         width: 100%;
     }
-    .flatpickr-mobile[type='time'] {
+    #timeInputOne, #timeInputTwo {
         font-weight: 700;
-        font-size: 5ex;
+        font-size: 8ex;
         text-align: center;
         border: none;
         cursor: pointer;
     }
 
-    .flatpickr-mobile[type='date'] {
+    #dateInputOne, #dateInputTwo {
         text-align: center;
         font-weight: 500;
         font-size: 4ex;

@@ -445,7 +445,7 @@ timezones.forEach((text, value) => {
     option2.textContent = text;
 
     if (value === localTimezone) option1.selected = true;
-    if (value === 'Etc/Utc') option2.selected = true;
+    if (value === 'Etc/UTC') option2.selected = true;
 
     selectTimezonesOne.appendChild(option1);
     selectTimezonesTwo.appendChild(option2);
