@@ -1,0 +1,155 @@
+* {
+    font-family: 'SF Pro Display', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #010101;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+body {
+    margin-top: 15vh;
+}
+
+section {
+    text-align: center;
+}
+
+select {
+    margin: 10px;
+}
+
+
+main {
+    display: flex;
+    margin-top: 5vh;
+    height: 75vh;
+}
+
+#dateInputOne,
+#dateInputTwo {
+    width: 100%;
+    height: 0.8em;
+    font-weight: 500;
+    font-size: 3em;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+#timeInputOne,
+#timeInputTwo {
+    height: 0.8em;
+    width: 100%;
+    font-weight: 700;
+    font-size: 6em;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+#left {
+    width: 50%;
+}
+
+#right {
+    width: 50%;
+}
+
+footer {
+    height: 5vh;
+    text-align: center;
+}
+
+footer button {
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    margin-left: 10vmax;
+    margin-right: 10vmax;
+}
+
+footer input {
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+    font-size: 17px;
+}
+
+#select-timezones-1,
+#select-timezones-2 {
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+div {
+    display: none;
+}
+
+p {
+    padding-bottom: 10px;
+}
+
+@media(max-width: 1000px) {
+    body {
+        margin-top: 20px;
+    }
+
+    main {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        height: auto;
+    }
+
+    #left,
+    #right {
+        width: 100%;
+    }
+
+    #timeInputOne,
+    #timeInputTwo {
+        font-weight: 700;
+        font-size: 8ex;
+        text-align: center;
+        border: none;
+        cursor: pointer;
+    }
+
+    #dateInputOne,
+    #dateInputTwo {
+        text-align: center;
+        font-weight: 500;
+        font-size: 4ex;
+        border: none;
+        cursor: pointer;
+    }
+
+    .flatpickr-mobile[type='date']:focus,
+    .flatpickr-mobile[type='time']:focus {
+        border: none;
+    }
+
+    p {
+        padding: 0;
+
+    }
+
+    footer {
+        display: block;
+    }
+
+    footer input {
+        display: none;
+    }
+    footer button{
+        margin-top: 2vh;
+    }
+}

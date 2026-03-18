@@ -2,46 +2,58 @@
 <html lang="pl">
 
 <head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>clock</title>
-    <link rel="shortcut icon" href="https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/favicon.png" type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
-    <script src="timezones.js" defer></script>
-    <script src="timezones-converter.js" defer></script>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="font-faces.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="icons/favicon.png" type="image/x-icon">
 </head>
 
 <body>
     <main>
-        <section id="left">
-            <p id="selectedTimeZoneOne">Strefa czasowa 1: </p>
-            <select id="select-timezones-1"></select>
-            <h3 id="ZoneOne-Date">
-                <input id="dateInputOne">
-                </h3>
-            <h1 id="ZoneOne-Hour">
-                <input id="timeInputOne">
-                </h1>
-        </section>
-        <section id="right">
-            <p id="selectedTimeZoneTwo">Strefa czasowa 2: </p>
-            <select id="select-timezones-2"></select>
-            <h3 id="ZoneTwo-Date">
-                <input id="dateInputTwo">
-                </h3>
-            <h1 id="ZoneTwo-Hour">
-                <input id="timeInputTwo">
-                </h1>
-        </section>
+        <h3>Dzień tygodnia, dzień miesiąc rok</h3>
+        <a href='index.html'>
+            <h1>Godzina</h1>
+        </a>
     </main>
     <footer>
-        <input type="text" id="search-1" placeholder="Szukaj strefy 1..">
-        <button id="count">Przelicz</button>
-        <input type="text" id="search-2" placeholder="Szukaj strefy 2..">
+        <h6>sekundy</h6>
     </footer>
+    <script>
+        const dateEl = document.querySelector("h3");
+        const timeEl = document.querySelector("h1");
+        const secondsEl = document.querySelector("h6");
+
+        const days = ["niedz.", "pon.", "wt.", "śr.", "czw.", "pt.", "sob."];
+        const months = [
+            "stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca",
+            "lipca", "sierpnia", "września", "października", "listopada", "grudnia"
+        ];
+
+        function cc() {
+            const date = new Date();
+
+            const day = days[date.getDay()];
+            const dayDT = date.getDate();
+            const month = months[date.getMonth()];
+            const year = date.getFullYear();
+
+            let hours = date.getHours();
+            let minutes = date.getMinutes().toString().padStart(2, "0");
+            let seconds = date.getSeconds().toString().padStart(2, "0");
+
+            dateEl.textContent = `${day}, ${dayDT} ${month} ${year}`;
+            timeEl.textContent = `${hours}:${minutes}`;
+            secondsEl.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        cc();
+        setInterval(cc, 1000);
+    </script>
 </body>
+
+
 
 </html>
