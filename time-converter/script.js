@@ -59,7 +59,7 @@ function formatTime(seconds, unit) {
         case 'h': return Math.floor(seconds / 3600);
         case 'd': return (seconds / 86400).toFixed(2);
         case 'wk': return (seconds / 604800).toFixed(2);
-        default: // hh:mm:ss
+        default:
             const h = Math.floor(seconds / 3600);
             const m = Math.floor((seconds % 3600) / 60);
             const s = Math.floor(seconds % 60);
