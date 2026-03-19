@@ -8,25 +8,43 @@
     font-weight: 500;
 }
 
+body {
+    margin-top: 15vh;
+}
+
 section {
     text-align: center;
 }
 
-h1{
-    text-align: center;
-    font-size: 4em;
-    padding: 0;
+select {
+    margin: 10px;
 }
+
 
 main {
     display: flex;
+    margin-top: 5vh;
     height: 75vh;
 }
 
-input {
+#dateInputOne,
+#dateInputTwo {
     width: 100%;
+    height: 0.8em;
     font-weight: 500;
     font-size: 3em;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+#timeInputOne,
+#timeInputTwo {
+    height: 0.8em;
+    width: 100%;
+    font-weight: 700;
+    font-size: 6em;
     text-align: center;
     border: none;
     cursor: pointer;
@@ -63,7 +81,8 @@ footer input {
     font-size: 17px;
 }
 
-select{
+#select-timezones-1,
+#select-timezones-2 {
     padding: 10px;
     border: 2px solid white;
     border-radius: 10px;

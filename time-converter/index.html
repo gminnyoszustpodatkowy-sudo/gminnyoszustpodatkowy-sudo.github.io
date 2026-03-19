@@ -5,43 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>clock</title>
-    <link rel="shortcut icon" href="https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/clock/icons/favicon.png" type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
-    <script src="timezones.js" defer></script>
-    <script src="timezones-converter.js" defer></script>
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/other/fonts/font-faces.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="font-faces.css">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/gminnyoszustpodatkowy-sudo/gminnyoszustpodatkowy-sudo.github.io/main/other/icons/favicon.png" type="image/x-icon">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
+    <h1>Przelicznik czasu:</h1>
     <main>
         <section id="left">
-            <p id="selectedTimeZoneOne">Strefa czasowa 1: </p>
-            <select id="select-timezones-1"></select>
-            <h3 id="ZoneOne-Date">
-                <input id="dateInputOne">
-                </h3>
-            <h1 id="ZoneOne-Hour">
-                <input id="timeInputOne">
-                </h1>
+            <p>z</p>
+            <select id="unit1"></select><br>
+            <input type="text" id="input1" placeholder="Podaj pierwszą wartość.."><br>
         </section>
         <section id="right">
-            <p id="selectedTimeZoneTwo">Strefa czasowa 2: </p>
-            <select id="select-timezones-2"></select>
-            <h3 id="ZoneTwo-Date">
-                <input id="dateInputTwo">
-                </h3>
-            <h1 id="ZoneTwo-Hour">
-                <input id="timeInputTwo">
-                </h1>
+            <p>na</p>
+            <select id="unit2"></select><br>
+            <input type="text" id="input2" placeholder="Wynik">
         </section>
     </main>
-    <footer>
-        <input type="text" id="search-1" placeholder="Szukaj strefy 1..">
-        <button id="count">Przelicz</button>
-        <input type="text" id="search-2" placeholder="Szukaj strefy 2..">
-    </footer>
+    <footer><button id="count">Przelicz</button></footer>
 </body>
-
 </html>
