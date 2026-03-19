@@ -52,28 +52,35 @@ const decimalUnits = ["msd", "sd", "mind", "hd"];
 const normalUnits = ["ms", "s", "min", "h", "d", "wk"];
 
 function formatTime(seconds, unit) {
-    switch(unit) {
-        case 'ms': return Math.round(seconds * 1000);
-        case 's': return Math.round(seconds);
-        case 'min': return Math.floor(seconds / 60);
-        case 'h': return Math.floor(seconds / 3600);
-        case 'd': return (seconds / 86400).toFixed(2);
-        case 'wk': return (seconds / 604800).toFixed(2);
-        default:
-            const h = Math.floor(seconds / 3600);
-            const m = Math.floor((seconds % 3600) / 60);
-            const s = Math.floor(seconds % 60);
-            return `${h}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+    if (unit === 'ms') return Math.round(seconds * 1000);
+    if (unit === 's') return Math.round(seconds);
+
+    if (unit === 'min') return (seconds / 60).toFixed(2);
+
+    if (unit === 'h') {
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor((seconds % 3600) / 60);
+        return `${h}:${m.toString().padStart(2, '0')}`;
     }
+
+    if (unit === 'd') return (seconds / 86400).toFixed(4);
+    if (unit === 'wk') return (seconds / 604800).toFixed(4);
+
+    return "";
 }
 
 function convert(value, fromUnit, toUnit) {
     let seconds;
 
-    if (typeof value === "string" && value.match(/\d/)) {
+    // jeśli wpis zawiera jednostki (np. "2h 30min")
+    if (/[a-z]/i.test(value)) {
         seconds = parseTimeString(value);
     } else {
-        seconds = parseFloat(value) * factors[fromUnit];
+        const num = parseFloat(value.replace(",", "."));
+
+        if (isNaN(num)) return "Błędna wartość";
+
+        seconds = num * factors[fromUnit];
     }
 
     if (normalUnits.includes(toUnit)) {
