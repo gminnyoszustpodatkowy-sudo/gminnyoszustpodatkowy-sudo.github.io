@@ -1,4 +1,4 @@
-const api_key = "a9a4c4a33b8f9fde847001f163b57fe4";
+const api_key = "a9a4c4a33b8f9fde847001f163b57fe4esh9";
 
 function degToDirection(deg) {
     const directions = ["Wieje z północy (N)", "Wieje z północnego wschodu (NE)", "Wieje ze wschodu (E)", "Wieje ze południowego wschodu (SE)", "Wieje z południa (S)", "Wieje z południowego zachodu (SW)", "Wieje z zachodu (W)", "Wieje z północnego zachodu (NW)"];
