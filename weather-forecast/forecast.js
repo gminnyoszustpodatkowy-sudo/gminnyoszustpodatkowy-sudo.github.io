@@ -1,18 +1,18 @@
-function mapIcon(main){
+function mapIcon(main) {
     const icons = {
         Clear: "clear",
         Cloud: "cloud",
         Rain: "rain",
         Thunderstorm: "thunderstorm",
-        Drizzle: "drizlle",
+        Drizzle: "drizzle",
         Snow: "snow",
         Mist: "mist",
     };
     return icons[main] || "unknown";
 }
-function getUniqueDays(data){
+function getUniqueDays(data) {
     const days = new Set();
-    data.list.forEach(item =>{
+    data.list.forEach(item => {
         const date = item.dt_txt.split(" ")[0];
         days.add(date);
     })
@@ -20,54 +20,54 @@ function getUniqueDays(data){
 }
 
 function getDayNightForecast(data, date) {
-  const dayHours = ["09:00:00", "12:00:00", "15:00:00", "18:00:00"];
-  const nightHours = ["00:00:00", "03:00:00", "06:00:00", "21:00:00"];
+    const dayHours = ["09:00:00", "12:00:00", "15:00:00", "18:00:00"];
+    const nightHours = ["00:00:00", "03:00:00", "06:00:00", "21:00:00"];
 
-  const dayData = [];
-  const nightData = [];
+    const dayData = [];
+    const nightData = [];
 
-  data.list.forEach(item => {
-    if (!item.dt_txt.startsWith(date)) return;
+    data.list.forEach(item => {
+        if (!item.dt_txt.startsWith(date)) return;
 
-    if (dayHours.some(h => item.dt_txt.includes(h))) {
-      dayData.push(item);
-    }
+        if (dayHours.some(h => item.dt_txt.includes(h))) {
+            dayData.push(item);
+        }
 
-    if (nightHours.some(h => item.dt_txt.includes(h))) {
-      nightData.push(item);
-    }
-  });
-
-  const getMaxTemp = arr =>
-    arr.length ? Math.max(...arr.map(i => i.main.temp)) : null;
-
-  const getIcon = arr => {
-    if (!arr.length) return "unknown";
-
-    const counts = {};
-
-    arr.forEach(i => {
-      const main = i.weather[0].main;
-      counts[main] = (counts[main] || 0) + 1;
+        if (nightHours.some(h => item.dt_txt.includes(h))) {
+            nightData.push(item);
+        }
     });
 
-    const mostCommon = Object.keys(counts).reduce((a, b) =>
-      counts[a] > counts[b] ? a : b
-    );
+    const getMaxTemp = arr =>
+        arr.length ? Math.max(...arr.map(i => i.main.temp)) : null;
 
-    return mapIcon(mostCommon);
-  };
+    const getIcon = arr => {
+        if (!arr.length) return "unknown";
 
-  return {
-    day: {
-      temp: getMaxTemp(dayData),
-      icon: getIcon(dayData)
-    },
-    night: {
-      temp: getMaxTemp(nightData),
-      icon: getIcon(nightData)
-    }
-  };
+        const counts = {};
+
+        arr.forEach(i => {
+            const main = i.weather[0].main;
+            counts[main] = (counts[main] || 0) + 1;
+        });
+
+        const mostCommon = Object.keys(counts).reduce((a, b) =>
+            counts[a] > counts[b] ? a : b
+        );
+
+        return mapIcon(mostCommon);
+    };
+
+    return {
+        day: {
+            temp: getMaxTemp(dayData),
+            icon: getIcon(dayData)
+        },
+        night: {
+            temp: getMaxTemp(nightData),
+            icon: getIcon(nightData)
+        }
+    };
 }
 
 function degToDirection(deg) {
@@ -82,9 +82,9 @@ function capitalize(word) {
 }
 
 const key = "a9a4c4a33b8f9fde847001f163b57fe4";
-let city = document.querySelector('#city').value;
 
 async function getWeather() {
+    let city = document.querySelector('#city').value;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}&units=metric&lang=pl`;
     try {
         const response = await fetch(url);
@@ -119,7 +119,7 @@ async function getWeather() {
         if (min_temp == max_temp) {
             minmax = `↑↓ ${max_temp}`;
         }
-        if (visibility = 10) {
+        if (visibility == 10) {
             visibility = `Nieograniczona`;
         }
         document.querySelector('main').innerHTML = `<section id='weatherInfo'><section id='weatherCityName'>
@@ -165,9 +165,8 @@ async function getWeather() {
     }
 }
 
-getWeather();
-
 async function getForecast() {
+    let city = document.querySelector('#city').value;
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${key}&units=metric&lang=pl`;
 
     try {
@@ -195,7 +194,8 @@ async function getForecast() {
                     <span>${item.date}</span>
                     <span><img src='icons/${item.day.icon}.png'></span>
                     <span>
-                        ${Math.round(item.day.temp)}° / ${Math.round(item.night.temp)}°
+                        ${item.day.temp ? Math.round(item.day.temp) + "°" : "--"} /
+${item.night.temp ? Math.round(item.night.temp) + "°" : "--"}
                     </span>
                 </div>
             `;
@@ -206,4 +206,11 @@ async function getForecast() {
     }
 }
 
-getForecast()
+async function handleSearch() {
+    await getWeather();
+    await getForecast();
+}
+
+handleSearch();
+
+document.querySelector('#btn').addEventListener('click', handleSearch);
