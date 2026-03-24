@@ -13,14 +13,17 @@ header {
     padding: 15px 15px 15px 15px;
     border-bottom: 1px solid white;
 }
+
 #head {
     font-weight: 700;
     font-size: 30px;
 }
-#container{
+
+#container {
     display: flex;
     justify-content: center;
 }
+
 nav input {
     padding: 7px;
     border: 2px solid white;
@@ -29,6 +32,7 @@ nav input {
     outline: none;
     margin-left: 15px;
 }
+
 nav button {
     padding: 7px;
     border: 2px solid white;
@@ -44,31 +48,37 @@ main {
     padding: 10px;
     width: 700px;
 }
+
 #weatherCityName {
     font-weight: 600;
     font-size: 2em;
     padding-bottom: 10px;
 }
-#weatherTemperatureNow{
+
+#weatherTemperatureNow {
     font-size: 5em;
     padding: 10px;
 }
-#weatherName{
+
+#weatherName {
     font-size: 2em;
     padding: 10px;
 }
-#weather{
+
+#weather {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-.weatherCaffle{
+
+.weatherCaffle {
     background-color: #333333;
     padding: 10px;
     width: 44%;
     border-radius: 10px;
     margin: 1%;
 }
+
 #weatherRadar {
     background-color: #333333;
     padding: 10px;
@@ -76,22 +86,30 @@ main {
     border-radius: 10px;
     margin: 1%;
 }
-#weatherRadar a, sup{
+
+#weatherRadar a,
+sup {
     background-color: #333333;
 }
-#weather h1, span{
+
+#weather h1,
+span {
     background-color: #333333;
 }
-#weatherInfo{
+
+#weatherInfo {
     text-align: center;
 }
-#weatherFullGetTime{
+
+#weatherFullGetTime {
     text-align: center;
 }
-#weatherTemperatureMinMax{
+
+#weatherTemperatureMinMax {
     padding-bottom: 10px;
 }
-#weatherForecast{
+
+#weatherForecast {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -103,90 +121,117 @@ main {
     border-radius: 10px;
     margin: 1%;
 }
-#day{
+
+#day {
     background-color: #333333;
 }
-#day span{
+
+#day span {
     justify-content: space-between;
 }
-span img{
+
+span img {
     background-color: #333333;
     width: 30px;
 }
 
 @media(max-width: 600px) {
+    #city {
+        width: 130px;
+    }
+    nav button {
+        margin-left: 5px;
+    }
+
     main {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-}
-#weatherCityName {
-    font-weight: 600;
-    font-size: 2em;
-    padding-bottom: 10px;
-}
-#weatherTemperatureNow{
-    font-size: 5em;
-    padding: 10px;
-}
-#weatherName{
-    font-size: 2em;
-    padding: 10px;
-}
-#weather{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.weatherCaffle{
-    background-color: #333333;
-    padding: 10px;
-    width: 88%;
-    border-radius: 10px;
-    margin: 1%;
-}
-#weatherRadar {
-    background-color: #333333;
-    padding: 10px;
-    width: 88%;
-    border-radius: 10px;
-    margin: 1%;
-}
-#weatherRadar a, sup{
-    background-color: #333333;
-}
-#weather h1, span{
-    background-color: #333333;
-}
-#weatherInfo{
-    text-align: center;
-}
-#weatherFullGetTime{
-    text-align: center;
-}
-#weatherTemperatureMinMax{
-    padding-bottom: 10px;
-}
-#weatherForecast{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-    font-size: 30px;
-    background-color: #333333;
-    padding: 10px;
-    width: 94%;
-    border-radius: 10px;
-    margin: 1%;
-}
-#day{
-    background-color: #333333;
-}
-#day span{
-    justify-content: space-between;
-}
-span img{
-    background-color: #333333;
-    width: 30px;
-}
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    #weatherCityName {
+        font-weight: 600;
+        font-size: 2em;
+        padding-bottom: 10px;
+    }
+
+    #weatherTemperatureNow {
+        font-size: 5em;
+        padding: 10px;
+    }
+
+    #weatherName {
+        font-size: 2em;
+        padding: 10px;
+    }
+
+    #weather {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .weatherCaffle {
+        background-color: #333333;
+        padding: 10px;
+        width: 88%;
+        border-radius: 10px;
+        margin: 1%;
+    }
+
+    #weatherRadar {
+        background-color: #333333;
+        padding: 10px;
+        width: 88%;
+        border-radius: 10px;
+        margin: 1%;
+    }
+
+    #weatherRadar a,
+    sup {
+        background-color: #333333;
+    }
+
+    #weather h1,
+    span {
+        background-color: #333333;
+    }
+
+    #weatherInfo {
+        text-align: center;
+    }
+
+    #weatherFullGetTime {
+        text-align: center;
+    }
+
+    #weatherTemperatureMinMax {
+        padding-bottom: 10px;
+    }
+
+    #weatherForecast {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+        font-size: 30px;
+        background-color: #333333;
+        padding: 10px;
+        width: 94%;
+        border-radius: 10px;
+        margin: 1%;
+    }
+
+    #day {
+        background-color: #333333;
+    }
+
+    #day span {
+        justify-content: space-between;
+    }
+
+    span img {
+        background-color: #333333;
+        width: 30px;
+    }
 }
