@@ -65,26 +65,54 @@ main {
     padding: 10px;
 }
 
-#weather {
+#weatherInfo2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 1%;
 }
 
 .weatherCaffle {
     background-color: #333333;
     padding: 10px;
-    width: 44%;
+    width: 46.5%;
     border-radius: 10px;
-    margin: 1%;
+    margin-bottom: 1%;
 }
 
-#weatherRadar {
+#weatherRadar,
+#weatherSunRiseSet {
     background-color: #333333;
     padding: 10px;
-    width: 88%;
     border-radius: 10px;
-    margin: 1%;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1%;
+}
+
+#weatherSRS {
+    display: flex;
+    justify-content: space-around;
+    background-color: #333333;
+}
+#weatherSRSInfo{
+    background-color: #333333;
+    padding-bottom: 15px;
+}
+
+#weatherSRSLeft,
+#weatherSRSRight {
+    background-color: #333333;
+    text-align: center;
+}
+
+#weatherSRSLeft img,
+p,
+#weatherSRSRight img,
+p {
+    background-color: #333333;
 }
 
 #weatherRadar a,
@@ -117,16 +145,15 @@ span {
     font-size: 30px;
     background-color: #333333;
     padding: 10px;
-    width: 94%;
+    width: 100%;
+    box-sizing: border-box;
     border-radius: 10px;
-    margin: 1%;
+    margin-bottom: 1%;
 }
 
 #day {
     background-color: #333333;
-}
-
-#day span {
+    display: flex;
     justify-content: space-between;
 }
 
@@ -136,9 +163,16 @@ span img {
 }
 
 @media(max-width: 600px) {
+    #weather {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
     #city {
         width: 130px;
     }
+
     nav button {
         margin-left: 5px;
     }
@@ -165,26 +199,22 @@ span img {
         padding: 10px;
     }
 
-    #weather {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .weatherCaffle {
+    .weatherCaffle,
+    #weatherRadar,
+    #weatherSunRiseSet {
         background-color: #333333;
         padding: 10px;
-        width: 88%;
+        width: 100%;
+        box-sizing: border-box;
         border-radius: 10px;
-        margin: 1%;
+        margin: 0;
     }
-
-    #weatherRadar {
-        background-color: #333333;
-        padding: 10px;
-        width: 88%;
-        border-radius: 10px;
-        margin: 1%;
+    #weatherRadar, #weatherSunRiseSet{
+        margin-bottom: 2%;
+    }
+    #weatherInfo2{
+        gap: 2%;
+        margin-bottom: 6.5%;
     }
 
     #weatherRadar a,
@@ -217,9 +247,11 @@ span img {
         font-size: 30px;
         background-color: #333333;
         padding: 10px;
-        width: 94%;
+        width: 100%;
+        box-sizing: border-box;
         border-radius: 10px;
-        margin: 1%;
+        margin: 0%;
+        margin-bottom: 2%;
     }
 
     #day {

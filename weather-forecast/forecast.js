@@ -1,12 +1,21 @@
+const { DateTime } = luxon;
+let randomCities = ['Londyn', 'Warszawa', 'Nowy Jork', 'Halifax', 'Tokio', 'Sydney', 'Los Angeles', 'Vancouver', 'Sao Paulo', 'Madryt', 'Kapsztad', 'Trypolis', 'Ateny', 'Honolulu', 'Kolonia, FM'];
+document.querySelector('#city').value = randomCities[Math.floor(Math.random()*14)];
 function mapIcon(main) {
     const icons = {
         Clear: "clear",
-        Cloud: "cloud",
+        Cloud: "clouds",
         Rain: "rain",
         Thunderstorm: "thunderstorm",
         Drizzle: "drizzle",
         Snow: "snow",
         Mist: "mist",
+        Fog: "mist",
+        Haze: "mist",
+        Smoke: "mist",
+        Dust: "mist",
+        Sand: "mist",
+        Ash: "mist",
     };
     return icons[main] || "unknown";
 }
@@ -20,20 +29,17 @@ function getUniqueDays(data) {
 }
 
 function getDayNightForecast(data, date) {
-    const dayHours = ["09:00:00", "12:00:00", "15:00:00", "18:00:00"];
-    const nightHours = ["00:00:00", "03:00:00", "06:00:00", "21:00:00"];
-
     const dayData = [];
     const nightData = [];
 
     data.list.forEach(item => {
         if (!item.dt_txt.startsWith(date)) return;
 
-        if (dayHours.some(h => item.dt_txt.includes(h))) {
-            dayData.push(item);
-        }
+        const hour = parseInt(item.dt_txt.split(" ")[1].split(":")[0]);
 
-        if (nightHours.some(h => item.dt_txt.includes(h))) {
+        if (hour >= 6 && hour < 18) {
+            dayData.push(item);
+        } else {
             nightData.push(item);
         }
     });
@@ -45,7 +51,6 @@ function getDayNightForecast(data, date) {
         if (!arr.length) return "unknown";
 
         const counts = {};
-
         arr.forEach(i => {
             const main = i.weather[0].main;
             counts[main] = (counts[main] || 0) + 1;
@@ -57,7 +62,7 @@ function getDayNightForecast(data, date) {
 
         return mapIcon(mostCommon);
     };
-
+console.log("DAY:", dayData.length, "NIGHT:", nightData.length);
     return {
         day: {
             temp: getMaxTemp(dayData),
@@ -113,8 +118,10 @@ async function getWeather() {
             timeStyle: 'long',
             dateStyle: 'full'
         }).format(get_time)}`;
-        let visibility = (data.visibility) / 1000;
+        let visibility = Math.round((data.visibility) / 1000);
         let city = data.name;
+        const sunrise_time = DateTime.fromSeconds(data.sys.sunrise, { zone: "utc" }).plus({ seconds: data.timezone }).toFormat("HH:mm");
+        const sunset_time = DateTime.fromSeconds(data.sys.sunset, { zone: "utc" }).plus({ seconds: data.timezone }).toFormat("HH:mm");
 
         if (min_temp == max_temp) {
             minmax = `↑↓ ${max_temp}`;
@@ -122,7 +129,10 @@ async function getWeather() {
         if (visibility == 10) {
             visibility = `Nieograniczona`;
         }
-        document.querySelector('main').innerHTML = `<section id='weatherInfo'><section id='weatherCityName'>
+        else {
+            visibility = `${visibility} km`;
+        }
+        document.querySelector('main').innerHTML = `<section id='weather'><section id='weatherInfo'><section id='weatherCityName'>
         ${city}, ${country}
         </section>
         <section id='weatherTemperatureNow'>
@@ -137,7 +147,7 @@ async function getWeather() {
         </section>
         <section id='weatherForecast'></section>
         </section>
-        <section id='weather'>
+        <section id='weatherInfo2'>
         <section id='weatherPressure' class='weatherCaffle'><span>Ciśnienie</span><br><h1>
         ${pressure}</h1>
         </section>
@@ -154,11 +164,25 @@ async function getWeather() {
         </section>
         <section id='weatherVisibility' class='weatherCaffle'><span>Widoczność</span><br><h1>
         ${visibility}</h1>
-        </section> </section>
+        </section>
+        </section>
+        <section id='weatherSunRiseSet'>
+        <div id='weatherSRSInfo'>
+        <span>Wschód i zachód słońca</span></div>
+        <div id='weatherSRS'>
+        <div id='weatherSRSLeft'>
+        <img src='icons/sunrise.png'>
+        <p>${sunrise_time}</p>
+        </div>
+        <div id='weatherSRSRight'>
+        <img src='icons/sunset.png'>
+        <p>${sunset_time}</p>
+        </div></div>
+        </section>
         <section id='weatherRadar'>
         <a href='https://openweathermap.org/weathermap'>Radar <sup>↗</sup></a>
         </section>
-        <section id='weatherFullGetTime'>${full_time}</section>`;
+        <section id='weatherFullGetTime'>${full_time}</section></section>`;
     }
     catch (error) {
         document.querySelector('main').innerHTML = `Błąd pobierania danych`;
@@ -193,9 +217,7 @@ async function getForecast() {
                 <div id="day">
                     <span>${item.date}</span>
                     <span><img src='icons/${item.day.icon}.png'></span>
-                    <span>
-                        ${item.day.temp ? Math.round(item.day.temp) + "°" : "--"} /
-${item.night.temp ? Math.round(item.night.temp) + "°" : "--"}
+                    <span>${item.day.temp ? Math.round(item.day.temp) + "°" : "--"} / ${item.night.temp ? Math.round(item.night.temp) + "°" : "--"}
                     </span>
                 </div>
             `;
@@ -214,3 +236,8 @@ async function handleSearch() {
 handleSearch();
 
 document.querySelector('#btn').addEventListener('click', handleSearch);
+document.querySelector('#city').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        document.querySelector('#btn').click();
+    }
+})
