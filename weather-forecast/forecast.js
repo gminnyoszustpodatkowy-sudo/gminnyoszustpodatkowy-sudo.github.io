@@ -1,6 +1,6 @@
 const { DateTime } = luxon;
 let randomCities = ['Londyn', 'Warszawa', 'Nowy Jork', 'Halifax', 'Tokio', 'Sydney', 'Los Angeles', 'Vancouver', 'Sao Paulo', 'Madryt', 'Kapsztad', 'Trypolis', 'Ateny', 'Honolulu', 'Kolonia, FM'];
-document.querySelector('#city').value = randomCities[Math.floor(Math.random()*14)];
+document.querySelector('#city').value = randomCities[Math.floor(Math.random() * 14)];
 function mapIcon(main) {
     const icons = {
         Clear: "clear",
@@ -62,7 +62,7 @@ function getDayNightForecast(data, date) {
 
         return mapIcon(mostCommon);
     };
-console.log("DAY:", dayData.length, "NIGHT:", nightData.length);
+    console.log("DAY:", dayData.length, "NIGHT:", nightData.length);
     return {
         day: {
             temp: getMaxTemp(dayData),
@@ -88,16 +88,45 @@ function capitalize(word) {
 
 const key = "a9a4c4a33b8f9fde847001f163b57fe4";
 
+async function fetchWeatherData(city) {
+    let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric&lang=pl`);
+    let data = await res.json();
+
+    if (data.cod == 200) return { data };
+
+    let geoRes = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${key}&units=metric&lang=pl`);
+    let geo = await geoRes.json();
+
+    if (!geo.length) return null;
+
+    const { lat, lon, name, country } = geo[0];
+
+    res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=metric&lang=pl`);
+    data = await res.json();
+
+    if (data.cod != 200) return null;
+
+    return { data, lat, lon, name, country, local_names: geo[0].local_names };
+}
+function getLocalizedName(localNames, fallback) {
+    if (!localNames) return fallback;
+
+    return localNames.pl || localNames.en || fallback;
+}
+
 async function getWeather() {
-    let city = document.querySelector('#city').value;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}&units=metric&lang=pl`;
+    const cityInput = document.querySelector('#city').value;
+
     try {
-        const response = await fetch(url);
-        const data = await response.json();
-        if (data.cod != 200) {
-            document.querySelector('main').innerHTML = `Nie znaleziono miasta`;
+        const result = await fetchWeatherData(cityInput);
+
+        if (!result) {
+            document.querySelector('main').innerHTML = "Nie znaleziono miasta";
             return;
         }
+
+        const { data } = result;
+
         const temp = `${Math.round(Number(data.main.temp))}°`;
         const temp_feel = `Odczuwalna: ${Math.round(Number(data.main.feels_like))}°`;
         const min_temp = `${Math.round(Number(data.main.temp_min))}°`;
@@ -105,11 +134,12 @@ async function getWeather() {
         let minmax = `↑ ${max_temp}/↓ ${min_temp}`;
         const pressure = `${data.main.pressure} hPa`;
         const humidity = `${data.main.humidity}%`;
-        const mainweather = data.weather[0].main;
         const desc = capitalize(data.weather[0].description);
-        const sunrise = data.sys.sunrise;
-        const sunset = data.sys.sunset;
-        const country = data.sys.country;
+        let city = data.name;
+        let country = data.sys.country;
+        if (result) {
+            city = getLocalizedName(result.local_names, result.name) || city;
+        }
         const wind_speed = `${((data.wind.speed).toString()).replace('.', ',')} km/h`;
         let wind_direction = degToDirection(data.wind.deg);
         const icon = data.weather[0].icon;
@@ -119,7 +149,6 @@ async function getWeather() {
             dateStyle: 'full'
         }).format(get_time)}`;
         let visibility = Math.round((data.visibility) / 1000);
-        let city = data.name;
         const sunrise_time = DateTime.fromSeconds(data.sys.sunrise, { zone: "utc" }).plus({ seconds: data.timezone }).toFormat("HH:mm");
         const sunset_time = DateTime.fromSeconds(data.sys.sunset, { zone: "utc" }).plus({ seconds: data.timezone }).toFormat("HH:mm");
 
@@ -183,61 +212,58 @@ async function getWeather() {
         <a href='https://openweathermap.org/weathermap'>Radar <sup>↗</sup></a>
         </section>
         <section id='weatherFullGetTime'>${full_time}</section></section>`;
-    }
-    catch (error) {
-        document.querySelector('main').innerHTML = `Błąd pobierania danych`;
+
+    } catch {
+        document.querySelector('main').innerHTML = "Błąd pobierania danych";
     }
 }
-
 async function getForecast() {
-    let city = document.querySelector('#city').value;
-    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${key}&units=metric&lang=pl`;
+    const city = document.querySelector('#city').value;
 
     try {
-        const res = await fetch(url);
-        const data = await res.json();
+        let res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=metric&lang=pl`);
+        let data = await res.json();
 
         if (data.cod !== "200") {
-            document.querySelector('#weatherForecast').innerHTML = "Błąd miasta";
-            return;
+            const geoRes = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${key}`);
+            const geo = await geoRes.json();
+
+            if (!geo.length) return;
+
+            const { lat, lon } = geo[0];
+
+            res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}&units=metric&lang=pl`);
+            data = await res.json();
         }
 
         const days = getUniqueDays(data);
-
-        const forecast = days.map(day => ({
-            date: day,
-            ...getDayNightForecast(data, day)
-        }));
-
         const result = document.querySelector('#weatherForecast');
         result.innerHTML = "";
-
-        forecast.slice(0, 5).forEach(item => {
+        days.slice(0, 5).forEach(day => {
+            const f = getDayNightForecast(data, day);
             result.innerHTML += `
-                <div id="day">
-                    <span>${item.date}</span>
-                    <span><img src='icons/${item.day.icon}.png'></span>
-                    <span>${item.day.temp ? Math.round(item.day.temp) + "°" : "--"} / ${item.night.temp ? Math.round(item.night.temp) + "°" : "--"}
-                    </span>
-                </div>
-            `;
+        <div id="day">
+            <span>${day}</span>
+            <span><img src='icons/${f.day.icon}.png'></span>
+            <span>
+                ${Math.round(f.day.temp) !== "--" ? Math.round(f.day.temp) + "°" : "--"} 
+                / 
+                ${Math.round(f.night.temp) !== "--" ? Math.round(f.night.temp) + "°" : "--"}
+            </span>
+        </div>
+    `;
         });
 
-    } catch (e) {
-        document.querySelector('#weatherForecast').innerHTML = "Błąd pobierania";
+    } catch {
+        document.querySelector('#weatherForecast').innerHTML = "Błąd prognozy";
     }
 }
-
 async function handleSearch() {
     await getWeather();
     await getForecast();
 }
-
 handleSearch();
-
 document.querySelector('#btn').addEventListener('click', handleSearch);
-document.querySelector('#city').addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-        document.querySelector('#btn').click();
-    }
-})
+document.querySelector('#city').addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleSearch();
+});
